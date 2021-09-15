@@ -4,12 +4,18 @@ const TodoAdd = (props) => {
   const [text, setText] = useState("");
 
   const sendDataToParent = () => {
-    props.cb({ type: "add", data: text });
+    props.cb({
+      type: "add",
+      data: {
+        id: Date.now(),
+        text,
+      },
+    });
   };
 
   const deleteHandler = () => {
     props.cb({ type: "delete", data: text });
-  }
+  };
 
   return (
     <>
